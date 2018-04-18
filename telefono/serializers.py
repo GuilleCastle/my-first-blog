@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from telefono.models import Grupo, Favoritos, Contacto, Correo, Telefono, Tipo_telefono
+from telefono.forms import contactoform
 
 class GrupoSerializer(serializers.ModelSerializer):
     class Meta:
@@ -26,6 +27,9 @@ class TelefonoSerializer(serializers.ModelSerializer):
         model = Telefono
         fields = ('telefono', 'contacto')
 
+    def __unicode__(self):
+        return self.name
+        
 class Tipo_telefonoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tipo_telefono

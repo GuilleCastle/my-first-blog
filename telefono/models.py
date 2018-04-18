@@ -15,6 +15,8 @@ class Contacto(models.Model):
     #llaves 
     grupo = models.ForeignKey('Grupo', on_delete=models.CASCADE, null=True)
     favorito = models.ForeignKey('Favoritos', on_delete=models.CASCADE, null=True)
+    def __unicode__(self):
+        return self.name
 
 class Correo(models.Model):
     correo = models.CharField(max_length=100, blank=True, default='', null=False)
@@ -26,10 +28,13 @@ class Telefono(models.Model):
     telefono = models.CharField(max_length=15, blank=True, default='', null=False)
     #llave
     contacto = models.ForeignKey('Contacto', on_delete=models.CASCADE, null=False)
-
+    def __unicode__(self):
+        return self.name
 
 class Tipo_telefono(models.Model):
     descripcion = models.CharField(max_length=100, blank=True, default='', null=False)
     #llave
     telefono = models.ForeignKey('Telefono', on_delete=models.CASCADE, null=False)
+    def __unicode__(self):
+        return self.name
 
